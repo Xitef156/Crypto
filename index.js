@@ -18,7 +18,7 @@ async function sleep(t) { return new Promise(resolve => setTimeout(() => resolve
     })
       var options = {
         method: 'post',
-        body: {price: price}, // Javascript object
+        body: {price: money.rate}, // Javascript object
         json: true, // Use,If you are sending JSON data
         url: "https://Crypto.xitef156.repl.co"
       }
