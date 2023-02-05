@@ -1,4 +1,4 @@
-const fetch = require('node-fetch')
+var request = require('request')
 const { SuperfaceClient } = require("@superfaceai/one-sdk");
 const sdk = new SuperfaceClient();
 async function sleep(t) { return new Promise(resolve => setTimeout(() => resolve(), t)) };
@@ -16,10 +16,17 @@ async function sleep(t) { return new Promise(resolve => setTimeout(() => resolve
       });
       resolve(result.unwrap())
     })
-    fetch("https://Crypto.xitef156.repl.co", {
-      method: "POST",
-      headers: {'Content-type': 'application/json'},
-      body: JSON.stringify({price: money.rate})
-    })
+      var options = {
+        method: 'post',
+        body: {price: price}, // Javascript object
+        json: true, // Use,If you are sending JSON data
+        url: "https://Crypto.xitef156.repl.co"
+      }
+      request(options, function (err) {
+        if (err) {
+          console.log('Error :', err)
+          return
+        }
+      });
   }
 })();
