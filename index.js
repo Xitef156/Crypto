@@ -17,11 +17,9 @@ async function sleep(t) { return new Promise(resolve => setTimeout(() => resolve
       resolve(result.unwrap())
     })
     fetch("https://Crypto.xitef156.repl.co", {
-        method: "POST",
-        headers: {
-            'Content-type': 'application/json'
-        },
-        body: JSON.stringify({price: money.rate})
+      method: "POST",
+      headers: {'Content-type': 'application/json'},
+      body: JSON.stringify({price: money.rate})
     })
   }
 })();
