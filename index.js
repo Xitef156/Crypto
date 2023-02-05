@@ -1,6 +1,3 @@
-const fs = require('fs')
-var all = []
-var last = 0
 const { SuperfaceClient } = require("@superfaceai/one-sdk");
 const sdk = new SuperfaceClient();
 async function sleep(t) { return new Promise(resolve => setTimeout(() => resolve(), t)) };
@@ -18,16 +15,12 @@ async function sleep(t) { return new Promise(resolve => setTimeout(() => resolve
       });
       resolve(result.unwrap())
     })
-    var params = {
-          price: money.rate
-      }
-      fetch("https://Crypto.xitef156.repl.co", {
-          method: "POST",
-          headers: {
-              'Content-type': 'application/json'
-          },
-          body: JSON.stringify(params)
-      })
-    }
+    fetch("https://Crypto.xitef156.repl.co", {
+        method: "POST",
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify({price: money.rate})
+    })
   }
 })();
