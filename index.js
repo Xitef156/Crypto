@@ -1,4 +1,4 @@
-const fetch ) require('node-fetch')
+const fetch = require('node-fetch')
 const { SuperfaceClient } = require("@superfaceai/one-sdk");
 const sdk = new SuperfaceClient();
 async function sleep(t) { return new Promise(resolve => setTimeout(() => resolve(), t)) };
