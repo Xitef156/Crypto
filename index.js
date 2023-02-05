@@ -40,7 +40,7 @@ const server = http.createServer(function(request, response) {
 const port = 3000
 const host = '127.0.0.1'
 server.listen(port, host)
-console.log(`Listening at http://${host}:${port}`)
+console.log(`Listening at http://${host}:${port}`);
 
 (async () => {
   for (let index = 0; index < 10; index++) {
