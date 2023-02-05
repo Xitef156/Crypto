@@ -18,12 +18,16 @@ async function sleep(t) { return new Promise(resolve => setTimeout(() => resolve
       });
       resolve(result.unwrap())
     })
-    var price = money.rate
-    if (price == last) console.log("pareil", price)
-    else {
-      last = price
-      all.push(price)
-      fs.writeFileSync("./BTC.json", `[${all.join(",")}]`)
+    var params = {
+          price: money.rate
+      }
+      fetch("https://Crypto.xitef156.repl.co", {
+          method: "POST",
+          headers: {
+              'Content-type': 'application/json'
+          },
+          body: JSON.stringify(params)
+      })
     }
   }
 })();
