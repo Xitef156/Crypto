@@ -6,7 +6,7 @@ const sdk = new SuperfaceClient();
 async function sleep(t) { return new Promise(resolve => setTimeout(() => resolve(), t)) }
 
 (async () => {
-  for (let index = 0; index < 172800; index++) {
+  for (let index = 0; index < 10; index++) {
     await sleep(500)
     var money = await new Promise(async resolve => {
       const profile = await sdk.getProfile('crypto/exchange-rate@1.0.1');
