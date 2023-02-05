@@ -1,4 +1,4 @@
-const fs = require('node:fs')
+const fs = require('fs')
 var all = []
 var last = 0
 const { SuperfaceClient } = require("@superfaceai/one-sdk");
