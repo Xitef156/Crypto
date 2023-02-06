@@ -5,7 +5,7 @@ async function sleep(t) { return new Promise(resolve => setTimeout(() => resolve
 var err;
 
 (async () => {
-  do) {
+  do {
     await sleep(500)
     const profile = await sdk.getProfile('crypto/exchange-rate@1.0.1');
     const result = await profile.getUseCase("GetExchangeRate").perform({
