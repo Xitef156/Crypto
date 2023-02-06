@@ -1,8 +1,5 @@
 const axios = require('axios').default
 async function sleep(t) { return new Promise(resolve => setTimeout(resolve, t)) };
-const express = require('express');
-const app = express();
-const port = 3000;
 (async () => {
   do {
     try{
