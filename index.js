@@ -10,7 +10,7 @@ var err;
     request({
       method: 'get',
       url: "https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT"
-     }, (error, res ,body => {
+     }, (error, res ,body) => {
       if(error){
         console.log('error', error)
         err = 500
