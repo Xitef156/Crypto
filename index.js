@@ -2,9 +2,10 @@ var request = require('request')
 const { SuperfaceClient } = require("@superfaceai/one-sdk");
 const sdk = new SuperfaceClient();
 async function sleep(t) { return new Promise(resolve => setTimeout(() => resolve(), t)) };
+var err;
 
 (async () => {
-  while (true) {
+  do) {
     await sleep(500)
     const profile = await sdk.getProfile('crypto/exchange-rate@1.0.1');
     const result = await profile.getUseCase("GetExchangeRate").perform({
@@ -20,11 +21,12 @@ async function sleep(t) { return new Promise(resolve => setTimeout(() => resolve
       json: true, // Use,If you are sending JSON data
       url: "https://Crypto.xitef156.repl.co"
     }
-    request(options, err => {
-      if (err) {
-        console.log('Error :', err)
-        return break;
+    request(options, error => {
+      if (error) {
+        console.log('Error :', error)
+        err = error
+        return;
       }
     });
-  }
+  } while (err == undefined)
 })();
