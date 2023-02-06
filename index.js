@@ -23,7 +23,7 @@ async function sleep(t) { return new Promise(resolve => setTimeout(() => resolve
     request(options, err => {
       if (err) {
         console.log('Error :', err)
-        break;
+        return break;
       }
     });
   }
