@@ -7,7 +7,7 @@ async function sleep(t) { return new Promise(resolve => setTimeout(resolve, t)) 
       await sleep(500)
       var money = 0
       var price = await axios.get("https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT")
-      console.log(price)/*
+      console.log(typeof price)/*
       money = JSON.parse(price).price
       console.log(money)
       new Axios().post("https://Crypto.xitef156.repl.co", {price: price})*/
