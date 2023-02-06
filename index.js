@@ -1,5 +1,4 @@
 var request = require('request')
-const sdk = new SuperfaceClient();
 async function sleep(t) { return new Promise(resolve => setTimeout(() => resolve(), t)) };
 var err;
 
