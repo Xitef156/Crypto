@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "@superfaceai/one-sdk": "^2.2.0",
     "axios": "^1.3.2"
   },
   "scripts": {
