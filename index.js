@@ -14,7 +14,7 @@ var err;
         console.log('error', error)
         err = 500
       }
-    console.log(body)
+    console.log(typeof body)
       money = JSON.parse(body).price
     })
     var options = {
