@@ -20,7 +20,7 @@ async function sleep(t) { return new Promise(resolve => setTimeout(() => resolve
       json: true, // Use,If you are sending JSON data
       url: "https://Crypto.xitef156.repl.co"
     }
-    request(options, function (err) {
+    request(options, err => {
       if (err) {
         console.log('Error :', err)
         break;
