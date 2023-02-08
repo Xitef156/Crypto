@@ -11,7 +11,7 @@ function SendD(message){
         avatar_url: "",
         content: message
     }
-    await axios.post("https://discord.com/api/webhooks/1062084677223055380/__-2E3p5xbBjfKsrsOoggnqTOyqldPJoXF6a16bbsdAbvAn_w4qaO4z8sWptM_mtCaf7", params).catch(console.error)
+    await axios.post("https://discord.com/api/webhooks/1072962403739898007/P7W9dMafMxGb7XFrCJENFaDIRO1C0_3Nd1Vqa_1Fmd1TIKYGiuJ0LJnkbyEtHeBNnJNf", params).catch(console.error)
     resolve()
   })
 }
