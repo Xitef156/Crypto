@@ -2,11 +2,12 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 3001;
   const axios = require('axios').default
+  var test = false
 async function sleep(t) { return new Promise(resolve => setTimeout(resolve, t)) };
 
 app.get("/", (req, res) => res.type('html').send(html));
 app.get("/go/", async (req, res) => {
-  do {
+  setInterval(() => {
     try{
       var price = (await axios.get(process.env["Crypto"])).data.price
       axios.post(process.env["URL"], {price: Number(price)}).catch(async() => await sleep(500))
@@ -14,8 +15,8 @@ app.get("/go/", async (req, res) => {
     } catch(e){
       console.error(e)
     }
-  } while (true)
-  res.send("hello")
+  }
+    res.type('html').send(go)
 });
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
@@ -67,6 +68,19 @@ const html = `
   <body>
     <section>
       Hello from Render!
+    </section>
+  </body>
+</html>
+`
+const go = `
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>go</title>
+  </head>
+  <body>
+    <section>
+      Go !
     </section>
   </body>
 </html>
