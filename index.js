@@ -33,7 +33,10 @@ app.get("/go/", async (req, res) => {
 em.emit('FirstEvent');
 });
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(port, async () => {
+  console.log(`Example app listening on port ${port}!`)
+  await SendD("Ready !")
+});
 // get the reference of EventEmitter class of events module
 var events = require('events');
 
