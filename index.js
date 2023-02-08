@@ -1,8 +1,22 @@
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 3001;
+  const axios = require('axios').default
+async function sleep(t) { return new Promise(resolve => setTimeout(resolve, t)) };
 
 app.get("/", (req, res) => res.type('html').send(html));
+app.get("/go/", async (req, res) => {
+  do {
+    try{
+      var price = (await axios.get(process.env["Crypto"])).data.price
+      axios.post(process.env["URL"], {price: Number(price)}).catch(async() => await sleep(500))
+      //console.log(price)
+    } catch(e){
+      console.error(e)
+    }
+  } while (true)
+  res.send("hello")
+});
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
