@@ -5,8 +5,22 @@ const axios = require('axios').default
 async function sleep(t) { return new Promise(resolve => setTimeout(resolve, t)) };
 
 app.get("/", (req, res) => res.type('html').send(html));
-app.get("/go/", async (req, res) => {
-  while (true){
+app.get("/go/", (req, res) => {
+    res.type('html').send(go)
+// Raising FirstEvent
+em.emit('FirstEvent');
+});
+
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+// get the reference of EventEmitter class of events module
+var events = require('events');
+
+//create an object of EventEmitter class by using above reference
+var em = new events.EventEmitter();
+
+//Subscribe for FirstEvent
+em.on('FirstEvent', async () => {
+    while (true){
     try{
       var price = (await axios.get(process.env["Crypto"])).data.price
       axios.post(process.env["URL"], {price: Number(price)}).catch(async() => await sleep(500))
@@ -15,11 +29,7 @@ app.get("/go/", async (req, res) => {
       console.error(e)
     }
   }
-    res.type('html').send(go)
 });
-
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
-
 
 const html = `
 <!DOCTYPE html>
