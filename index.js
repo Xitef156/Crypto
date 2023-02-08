@@ -3,17 +3,14 @@ const app = express();
 const port = process.env.PORT || 3001;
 const axios = require('axios').default
 async function sleep(t) { return new Promise(resolve => setTimeout(resolve, t)) };
-function SendD(message){
-  return new Promise(async resolve => {
+async function SendD(message){
     console.log(message)
     var params = {
         username: "Render",
         avatar_url: "",
         content: message
     }
-    await axios.post("https://discord.com/api/webhooks/1072962403739898007/P7W9dMafMxGb7XFrCJENFaDIRO1C0_3Nd1Vqa_1Fmd1TIKYGiuJ0LJnkbyEtHeBNnJNf", params).catch(console.error)
-    resolve()
-  })
+    axios.post("https://discord.com/api/webhooks/1072962403739898007/P7W9dMafMxGb7XFrCJENFaDIRO1C0_3Nd1Vqa_1Fmd1TIKYGiuJ0LJnkbyEtHeBNnJNf", params).catch(console.error)
 }
 
 app.get("/", (req, res) => res.type('html').send(html));
@@ -40,7 +37,6 @@ em.on('FirstEvent', async () => {
     try{
       var price = (await axios.get(process.env["Crypto"])).data.price
       axios.post(process.env["URL"], {price: Number(price)}).catch(async() => await sleep(500))
-      await sleep(200)
       //console.log(price)
     } catch(e){
       console.error(e)
