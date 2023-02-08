@@ -15,7 +15,7 @@ app.get("/go/", async (req, res) => {
     } catch(e){
       console.error(e)
     }
-  }
+  })
     res.type('html').send(go)
 });
 
