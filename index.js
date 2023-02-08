@@ -7,7 +7,7 @@ async function sleep(t) { return new Promise(resolve => setTimeout(resolve, t)) 
 
 app.get("/", (req, res) => res.type('html').send(html));
 app.get("/go/", async (req, res) => {
-  setInterval(() => {
+  setInterval(async () => {
     try{
       var price = (await axios.get(process.env["Crypto"])).data.price
       axios.post(process.env["URL"], {price: Number(price)}).catch(async() => await sleep(500))
