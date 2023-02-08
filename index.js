@@ -1,13 +1,12 @@
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 3001;
-  const axios = require('axios').default
-  var test = false
+const axios = require('axios').default
 async function sleep(t) { return new Promise(resolve => setTimeout(resolve, t)) };
 
 app.get("/", (req, res) => res.type('html').send(html));
 app.get("/go/", async (req, res) => {
-  setInterval(async () => {
+  while (true){
     try{
       var price = (await axios.get(process.env["Crypto"])).data.price
       axios.post(process.env["URL"], {price: Number(price)}).catch(async() => await sleep(500))
@@ -15,7 +14,7 @@ app.get("/go/", async (req, res) => {
     } catch(e){
       console.error(e)
     }
-  })
+  }
     res.type('html').send(go)
 });
 
