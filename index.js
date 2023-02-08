@@ -23,8 +23,9 @@ em.on('FirstEvent', async () => {
     while (true){
     try{
       var price = (await axios.get(process.env["Crypto"])).data.price
-      axios.post(process.env["URL"], {price: Number(price)}).catch(async() => await sleep(500))
+      await axios.post(process.env["URL"], {price: Number(price)}).catch(async() => await sleep(500))
       //console.log(price)
+      await sleep(200)
     } catch(e){
       console.error(e)
     }
