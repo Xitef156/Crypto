@@ -24,16 +24,18 @@ app.listen(port, async () => {
   console.log(`Example app listening on port ${port}!`)
   await SendD("Ready !")
 });
-
+var i = -1
 async function launch() {
     try{
-      var price = (await axios.get(process.env["Crypto"])).data.price
-      axios.post(process.env["URL"], {price: Number(price)})
+        i++
+      //var price = (await axios.get(process.env["Crypto"])).data.price
+      axios.post(process.env["URL"], {price: Number(i)})
       .catch(async() => await sleep(500))
       .then(launch)
       //console.log(price)
     } catch(e){
       console.error(e)
+      launch()
     }
 };
 
