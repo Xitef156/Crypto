@@ -17,32 +17,25 @@ app.get("/", (req, res) => res.type('html').send(html));
 app.get("/go/", async (req, res) => {
     res.type('html').send(go)
     await SendD("Go !")
-// Raising FirstEvent
-em.emit('FirstEvent');
+    launch()
 });
 
 app.listen(port, async () => {
   console.log(`Example app listening on port ${port}!`)
   await SendD("Ready !")
 });
-// get the reference of EventEmitter class of events module
-var events = require('events');
 
-//create an object of EventEmitter class by using above reference
-var em = new events.EventEmitter();
-
-//Subscribe for FirstEvent
-em.on('FirstEvent', async () => {
-    while (true){
+async function launch() {
     try{
       var price = (await axios.get(process.env["Crypto"])).data.price
-      axios.post(process.env["URL"], {price: Number(price)}).catch(async() => await sleep(500))
+      axios.post(process.env["URL"], {price: Number(price)})
+      .catch(async() => await sleep(500))
+      .then(launch)
       //console.log(price)
     } catch(e){
       console.error(e)
     }
-  }
-});
+};
 
 const html = `
 <!DOCTYPE html>
