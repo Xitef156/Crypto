@@ -10,7 +10,7 @@ async function SendD(message){
         avatar_url: "",
         content: message
     }
-    axios.post("https://discord.com/api/webhooks/1072962403739898007/P7W9dMafMxGb7XFrCJENFaDIRO1C0_3Nd1Vqa_1Fmd1TIKYGiuJ0LJnkbyEtHeBNnJNf", params).catch(console.error)
+    axios.post(process.env.Token, params).catch(console.error)
 }
 
 app.get("/", (req, res) => res.type('html').send(html));
