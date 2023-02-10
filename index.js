@@ -10,7 +10,7 @@ async function SendD(message){
         avatar_url: "",
         content: message
     }
-    axios.post(process.env.Token, params).catch(console.error)
+    await axios.post(process.env.Token, params).catch(err => console.error(String(err).slice(0,100)))
 }
 
 app.get("/", (req, res) => res.type('html').send(html));
@@ -115,5 +115,5 @@ async function sleep(t) { return new Promise(resolve => setTimeout(resolve, t)) 
 })();
 */
 process.on('unhandledRejection', async (reason, promise) => {
-  await SendD(`Crash :( reason : ${String(reason.stack || reason).slice(0,1000)}${String(reason.stack || reason).length > 30 ? "..." : ''}`)
+  await SendD(`Crash :( reason : ${String(reason.stack || reason).slice(0,100)}${String(reason.stack || reason).length > 30 ? "..." : ''}`)
 })
