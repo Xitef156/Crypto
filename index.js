@@ -23,7 +23,7 @@ app.listen(port, async () => {
   console.log(`Example app listening on port ${port}!`)
   await SendD("Ready !")
 });
-function launch() {
+async function launch() {
     try{
       var price = (await axios.get(process.env["Crypto"])).data.price
       await axios.post(process.env["URL"], {price: Number(price)})
