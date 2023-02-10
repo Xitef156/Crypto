@@ -32,6 +32,7 @@ async function launch() {
     } catch(e){
       await SendD(e)
     }
+    launch()
 };
 
 const html = `
