@@ -16,7 +16,7 @@ async function SendD(message){
 app.get("/", (req, res) => res.type('html').send(html));
 app.get("/go/", async (req, res) => {
     res.type('html').send(go)
-    await launch()
+    launch()
 });
 
 app.listen(port, async () => {
@@ -24,17 +24,14 @@ app.listen(port, async () => {
   await SendD("Ready !")
 });
 function launch() {
-    return new Promise(async resolve => {
-        try{
-          var price = (await axios.get(process.env["Crypto"])).data.price
-          await axios.post(process.env["URL"], {price: Number(price)})
-          .catch(async() => await sleep(500))
-          //console.log(price)
-        } catch(e){
-          await SendD(e)
-        }
-        resolve()
-    })
+    try{
+      var price = (await axios.get(process.env["Crypto"])).data.price
+      await axios.post(process.env["URL"], {price: Number(price)})
+      .catch(async() => await sleep(500))
+      //console.log(price)
+    } catch(e){
+      await SendD(e)
+    }
 };
 
 const html = `
